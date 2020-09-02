@@ -14,8 +14,10 @@ class MovieController extends Controller
      */
     public function index()
     {
+
       $movies = Movie::all();
-      dd($movies);
+
+      return view('movies', compact('movies'));
 
     }
 
@@ -46,9 +48,18 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Movie $movie)
     {
-        //
+      // // $movies = Movie::where('id', $id)->first();
+      // //  or
+      // $movie = Movie::find($id);
+      //
+      // // In caso di: public function show($id) riga:51
+      // if (empty($movie)) {
+      //   abort(404);
+      // }
+
+      return view('show', compact('movie'));
     }
 
     /**
